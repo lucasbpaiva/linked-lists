@@ -15,7 +15,9 @@ export class LinkedList {
     prepend(value) {
         // adds a new node containing value to the start of the list
         const newNode = new Node(value, this.head);
-        if (this.head === null) this.tail = newNode;
+        if (this.head === null) {
+            this.tail = newNode;
+        }
         this.head = newNode;
         this.size++;
     }
@@ -35,6 +37,19 @@ export class LinkedList {
 
     at(index) {
         // returns the node at the given index
+        if (index >= this.size || index < (-1 * this.size)) {
+            return null;
+        }
+            
+        if (index < 0) {
+            index = this.size + index;
+        }
+
+        let pointer = this.head;
+        for (let i = 0; i < index; i++) {
+            pointer = pointer.next;
+        }
+        return pointer;
     }
 
     pop() {
