@@ -53,7 +53,23 @@ export class LinkedList {
     }
 
     pop() {
-        // removes the last element from the list
+        // removes the last element from the list and returns it
+        if (this.head === null) {
+            return null;
+        }
+        if (this.size === 1) {
+            const node = this.head;
+            this.head = null;
+            this.tail = null;
+            this.size--;
+            return node;
+        }
+        const secondLast = this.at(-2);
+        const last = this.tail;
+        secondLast.next = null;
+        this.tail = secondLast;
+        this.size--;
+        return last;
     }
 
     contains(value) {
