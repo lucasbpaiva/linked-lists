@@ -95,17 +95,30 @@ export class LinkedList {
             return null;
         }
         let pointer = this.head;
+        let index = 0;
         while (pointer) {
             if (pointer.val === value) {
-                return pointer;
+                return index;
             }
             pointer = pointer.next;
+            index++;
         }
         return null;
     }
 
     toString() {
         // represents LinkedList object as a string in the format: ( value ) -> ( value ) -> ( value ) -> null
+        if (this.head === null) {
+            return "Empty List";
+        }
+        let result = "";
+        let pointer = this.head;
+        while (pointer) {
+            result += `( ${pointer.val} ) -> `;
+            pointer = pointer.next;
+        }
+        result += "null";
+        return result;
     }
 
     insertAt(value, index) {
