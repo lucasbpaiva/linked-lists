@@ -146,5 +146,21 @@ export class LinkedList {
 
     removeAt(index) {
         // removes the node at the given index
+        if (this.head === null) {
+            return;
+        }
+        if (this.size === 1 || index >= this.size - 1 || index === -1) {
+            this.pop();
+            return;
+        }
+        if (index === 0 || index <= (-1 * this.size)) {
+            this.head = this.head.next;
+            this.size --;
+            return;
+        }
+        const prev = this.at(index - 1);
+        const current = this.at(index);
+        prev.next = current.next;
+        this.size--;
     }
 }
