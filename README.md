@@ -6,12 +6,12 @@ This repository features a fundamental implementation of the Singly Linked List 
 
 The `LinkedList` class implements a classic **Singly Linked List** structure.
 
-##Core Structure
+### Core Structure
 
  * **Node Class:** A basic building block with two properties: val (the value stored) and next (a pointer to the next node).
  * **LinkedList Class:** Manages the list, primarily through the head pointer, which references the first node.
     
-##Available Methods
+### Available Methods
 
 | Method | Description |
 | :--- | :--- |
