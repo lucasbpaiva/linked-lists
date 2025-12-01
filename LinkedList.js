@@ -15,7 +15,7 @@ export class LinkedList {
     prepend(value) {
         // adds a new node containing value to the start of the list
         const newNode = new Node(value, this.head);
-        if (this.head === null) {
+        if (this.head === null) { // if list empty, newNode becomes tail
             this.tail = newNode;
         }
         this.head = newNode;
@@ -25,7 +25,8 @@ export class LinkedList {
     append(value) {
         // adds a new node containing value to the end of the list
         const newNode = new Node(value, null);
-        if (this.head === null) {
+        if (this.head === null) { 
+            // if list empty, newNode becomes head and tail
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -42,6 +43,7 @@ export class LinkedList {
         }
             
         if (index < 0) {
+            // allow negative indexing
             index = this.size + index;
         }
 
@@ -74,6 +76,20 @@ export class LinkedList {
 
     contains(value) {
         // returns whether the passed in value is in the list
+        if (value === null) {
+            return true;
+        }
+        if (this.head === null) {
+            return false;
+        }
+        let pointer = this.head;
+        while (pointer) {
+            if (pointer.val === value) {
+                return true;
+            }
+            pointer = pointer.next;
+        }
+        return false;
     }
 
     find(value) {
