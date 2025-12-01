@@ -76,9 +76,6 @@ export class LinkedList {
 
     contains(value) {
         // returns whether the passed in value is in the list
-        if (value === null) {
-            return true;
-        }
         if (this.head === null) {
             return false;
         }
@@ -94,6 +91,17 @@ export class LinkedList {
 
     find(value) {
         // returns the index of the node containing value, or null if not found
+        if (this.head === null) {
+            return null;
+        }
+        let pointer = this.head;
+        while (pointer) {
+            if (pointer.val === value) {
+                return pointer;
+            }
+            pointer = pointer.next;
+        }
+        return null;
     }
 
     toString() {
