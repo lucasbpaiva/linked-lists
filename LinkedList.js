@@ -1,4 +1,4 @@
-export class Node {
+class Node {
     constructor(val, next) {
         this.val = (val === undefined ? null : val);
         this.next = (next === undefined ? null : next);
@@ -123,6 +123,25 @@ export class LinkedList {
 
     insertAt(value, index) {
         // inserts a new node with the provided value at the given index
+        if (this.head === null) {
+            this.append(value);
+            return;
+        }
+        if (index === 0 || index <= (-1 * this.size)) {
+            this.prepend(value);
+            return;
+        } 
+        if (index >= this.size) {
+            // put this condition after checking index === 0 in case list has 1 element
+            this.append(value);
+            return;
+        }
+
+        const prev = this.at(index - 1);
+        const current = this.at(index);
+        const newNode = new Node(value, current);
+        prev.next = newNode;
+        this.size++;
     }
 
     removeAt(index) {
